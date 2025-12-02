@@ -1,7 +1,15 @@
+@import url('./styles/Header.css');
+@import url('./styles/Home.css');
+@import url('./styles/Footer.css');
+
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+
+  padding: 0;
+
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -12,3 +20,47 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* body {
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vh;
+  background-color: #7979797b;
+
+} */
+
+main {
+  flex: 1; /* заема наличното пространство */
+}
+
+
+a {
+  text-decoration: none; 
+  color: #000000;
+  border-radius: 20px;
+  transition: all .3s;
+  font-size: 15px;
+  /* padding: auto; */
+  /* align-items: center; */
+
+}
+
+a:hover {
+  color: #000000;
+  cursor: pointer;
+}
+
+ a.active {
+  background-color: rgb(109, 109, 109);
+  color: #fff;
+  cursor: pointer;
+}
+
+

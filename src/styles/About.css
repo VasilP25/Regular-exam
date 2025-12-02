@@ -1,0 +1,39 @@
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 80vh; */
+  background-color: #7979797b;
+
+  padding: 1rem;
+}
+
+.about-card {
+  background: #ffffff;
+  padding: 0px 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  max-width: 600px;
+  text-align: center;
+}
+
+.about-card h1 {
+  color: #2c3e50;
+}
+
+.about-card h3 {
+  color: #34495e;
+}
+
+.about-card p {
+  color: #555555;
+}
+
+.about-card a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.about-card a:hover {
+  text-decoration: underline;
+}

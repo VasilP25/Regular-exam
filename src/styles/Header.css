@@ -15,12 +15,7 @@ header{
   background-color: #7f7e7e;
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
   transition: all .8s;
-  /* justify-content: center; */
   align-items: center;
-  
-  margin-bottom: 20px;
-
-  
 }
 .title{
   color: #000000fe;

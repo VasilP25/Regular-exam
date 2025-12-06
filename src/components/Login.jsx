@@ -6,12 +6,17 @@ import UserContext from "../context/contexts";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loginHandler } = useContext(UserContext);
-  //   const navigate = useNavigate();
+  let { user, loginHandler } = useContext(UserContext);
+
   const emailChangeHandler = (e) => {
+    console.log(e.target.value);
+    console.log(user);
+
     setEmail(e.target.value);
   };
   const passwordChangeHandler = (e) => {
+    console.log(e.target.value);
+
     setPassword(e.target.value);
   };
 
@@ -33,7 +38,7 @@ export default function Login() {
 
           <h1>Login</h1>
 
-          <form onSubmit={submitEvent}>
+          <form action={submitEvent}>
             <label htmlFor="email"> Email: </label>
             <input
               type="text"

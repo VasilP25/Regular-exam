@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { useNavigate } from "react-router";
 
 const UserContext = createContext({
   user: {
@@ -8,15 +9,23 @@ const UserContext = createContext({
     accessToken: "",
   },
   loginHandler() {},
+  registerHandler() {},
+  logout() {},
 });
 
 export function UserProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    email: "",
+    username: "",
+    _id: "",
+    accessToken: "",
+  });
 
-  const loginHandler = async (email, password) => {
+  const loginHandler = async (data) => {
     const response = await fetch("http://localhost:3030/users/login", {
       method: "POST",
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify(data),
       headers: {
         "content-type": "application/json",
       },
@@ -27,13 +36,47 @@ export function UserProvider({ children }) {
       return null;
     }
     const result = await response.json();
+
     setUser(result);
+    localStorage.setItem("_id", result._id);
+    localStorage.setItem("at", result.accessToken);
+    navigate("/");
+    return result;
+  };
+
+  const registerHandler = async (data) => {
+    const response = await fetch("http://localhost:3030/users/register", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      alert(result.message);
+      return null;
+    }
+
+    setUser(result);
+    localStorage.setItem("_id", result._id);
+    localStorage.setItem("at", result.accessToken);
+    navigate("/");
 
     return result;
   };
+
+  const logout = async () => {
+    await fetch("http://localhost:3030/users/logout");
+
+    localStorage.removeItem("_id");
+    localStorage.removeItem("at");
+    setUser(null);
+    navigate("/");
+  };
   const userContextData = {
     user,
+    isAuthenticated: !!user?.accessToken,
     loginHandler,
+    registerHandler,
+    logout,
   };
 
   return (
@@ -42,5 +85,11 @@ export function UserProvider({ children }) {
     </UserContext.Provider>
   );
 }
+
+// export function useData() {
+//   const contextData = useContext(UserContext);
+
+//   return contextData;
+// }
 
 export default UserContext;

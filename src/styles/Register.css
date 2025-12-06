@@ -1,0 +1,55 @@
+
+.containerRegister {
+  background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 0px 20px;
+    transition: transform 0.2s;
+    width: 400px;
+    text-align: center;
+}
+
+.containerRegister p {
+    color: #000000;
+}
+
+.containerRegister p a {
+    transition:ease-in-out 0.2s;
+}
+
+.containerRegister p a:hover {
+font-weight: bold;
+}
+
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.registerbtn {
+  padding: 15px;
+    border-radius: 10px;
+    border: none;
+    color: rgb(5, 5, 5);
+    cursor: pointer;
+    background-color: #959494;
+    width: 100%;
+    font-size: 16px;
+  transition: all .3s;
+
+}
+.registerbtn:hover {
+    background-color: #c8d20f;
+  color: #000000;
+  cursor: pointer;
+}
+
+p.error {
+    text-align: left;
+    border-radius: 0.5em;
+    color: red !important;
+    font-weight: bold;
+    font-size: small;
+}
+
+

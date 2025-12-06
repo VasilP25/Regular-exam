@@ -17,7 +17,6 @@ export default function Header() {
               <li>
                 <Link to="/catalog">Catalog</Link>
               </li>
-              {/* @if (isLoggedin) { */}
               <li>
                 <Link to="/mytrainings">My trainigs</Link>
               </li>
@@ -27,15 +26,12 @@ export default function Header() {
               <li>
                 <Link to="logout">Logout</Link>
               </li>
-              {/* }@else { */}
-              {/* <li>
+              <li>
                 <Link to="/login">Login</Link>
               </li>
               <li>
                 <Link to="/register">Register</Link>
-              </li> */}
-
-              {/* } */}
+              </li>
 
               <li>
                 <Link to="/about">About</Link>

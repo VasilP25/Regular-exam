@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import Logout from "./components/Logout";
 import Create from "./components/Create";
 import Catalog from "./components/Catalog";
+import Details from "./components/Details";
 
 function App() {
   return (
@@ -21,7 +22,10 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/create" element={<Create />} />
-        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/catalog">
+          <Route index element={<Catalog />} />
+          <Route path="details/:_id" element={<Details />} />
+        </Route>
       </Routes>
       <Footer />
     </>

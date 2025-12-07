@@ -7,6 +7,7 @@
 @import url('./styles/Create.css');
 @import url('./styles/Catalog.css');
 @import url('./styles/singleCard.css');
+@import url('./styles/Details.css');
 
 
 :root {
@@ -30,6 +31,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color:#5d5c5c
 }
 
 /* body {

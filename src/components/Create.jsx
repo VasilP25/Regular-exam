@@ -47,7 +47,7 @@ export default function Create() {
         user.accessToken
       );
 
-      navigate("/");
+      navigate("/catalog");
     } catch (error) {
       alert(error.message);
     }

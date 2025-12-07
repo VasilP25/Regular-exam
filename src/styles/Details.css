@@ -1,0 +1,113 @@
+/* .container{
+    border: solid ;
+    border-color: black;
+    height: auto;
+    width: 300px;
+} */
+
+
+
+
+/* training-card.component.css */
+.card-details {
+  width: 100%;
+  max-width: 450px;
+  margin: 20px auto;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  transition: transform 0.2s ease-in-out;
+  height: auto;
+}
+.container-card {
+    display: flex;
+    width:auto;
+    height:100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+
+.card-header .type {
+  background: #014d1a;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 16px;
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.card-body h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: #34495e;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px;
+  border-top: 1px solid #eee;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn.edit {
+  color: rgb(5, 5, 5);
+    cursor: pointer;
+    background-color: #959494;
+}
+
+.btn.edit:hover {
+  background-color: #c8d20f;
+  color: #000000;
+  cursor: pointer;
+}
+
+.btn.delete {
+  color: rgb(5, 5, 5);
+    cursor: pointer;
+    background-color: #959494;
+}
+
+.btn.delete:hover {
+  background-color: #c8d20f;
+  color: #000000;
+  cursor: pointer;
+}
+

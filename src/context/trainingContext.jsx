@@ -9,6 +9,7 @@ const TrainingContext = createContext({
   },
   createTraining() {},
   getAll() {},
+  getOne() {},
 });
 
 export function TrainingProvider({ children }) {
@@ -45,10 +46,23 @@ export function TrainingProvider({ children }) {
       alert(error.message);
     }
   };
+  const getOne = async (id) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3030/data/trainings/${id}`
+      );
+
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   const trainingContextData = {
     createTraining,
     getAll,
+    getOne,
   };
 
   return (

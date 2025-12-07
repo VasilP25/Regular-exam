@@ -6,7 +6,11 @@ export default function SingleTraining({ training }) {
       <div class="card">
         <h2>{training.title}</h2>
         <p className="type">{training.type}</p>
-        <Link to={`detals/${training._id}`} class="details-link">
+        <Link
+          to={`details/${training._id}`}
+          state={training}
+          class="details-link"
+        >
           Details
         </Link>
       </div>

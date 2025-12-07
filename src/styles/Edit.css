@@ -1,0 +1,91 @@
+
+.container-edit {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    width: 400px;
+    text-align: center;
+}
+
+
+
+input{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+.centering{
+    display: flex;
+  justify-content: center; 
+  align-items: center;     
+  height: 60vh;      
+  margin: 0;
+  padding-top: 170px;
+}
+.registerbtn {
+  padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: none;
+    color: rgb(5, 5, 5);
+    cursor: pointer;
+    background-color: #959494;
+    width: 100%;
+    font-size: 16px;
+  transition: all .3s;
+
+}
+.registerbtn:hover {
+    background-color: #c8d20f;
+  color: black;
+  cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+textarea:focus {
+    background-color: #ddd;
+  outline: none;
+}
+p.error {
+    text-align: left;
+    border-radius: 0.5em;
+    color: red !important;
+    padding-top: 0;
+    font-weight: bold;
+}
+
+button:disabled {
+  cursor: crosshair;
+  opacity: 0.6;
+}
+

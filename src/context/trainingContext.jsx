@@ -10,6 +10,7 @@ const TrainingContext = createContext({
   createTraining() {},
   getAll() {},
   getOne() {},
+  deleteOne() {},
 });
 
 export function TrainingProvider({ children }) {
@@ -58,11 +59,27 @@ export function TrainingProvider({ children }) {
       alert(error.message);
     }
   };
+  const deleteOne = async (id, accessToken) => {
+    const response = await fetch(`http://localhost:3030/data/trainings/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        "X-Authorization": accessToken,
+      },
+    });
+    if (!response.ok) {
+      alert("Something hets wrong!");
+      return null;
+    }
+    const result = response.json();
+    return result;
+  };
 
   const trainingContextData = {
     createTraining,
     getAll,
     getOne,
+    deleteOne,
   };
 
   return (

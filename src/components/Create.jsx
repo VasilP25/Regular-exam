@@ -43,6 +43,7 @@ export default function Create() {
           type,
           description,
           timeToComplete,
+          likes: [],
         },
         user.accessToken
       );

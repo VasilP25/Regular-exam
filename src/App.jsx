@@ -10,6 +10,8 @@ import Logout from "./components/Logout";
 import Create from "./components/Create";
 import Catalog from "./components/Catalog";
 import Details from "./components/Details";
+import Delete from "./components/Delete";
+import Edit from "./components/Edit";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path="/catalog">
           <Route index element={<Catalog />} />
           <Route path="details/:_id" element={<Details />} />
+          <Route path="details/:_id/delete" element={<Delete />} />
+          <Route path="details/:_id/edit" element={<Edit />} />
         </Route>
       </Routes>
       <Footer />

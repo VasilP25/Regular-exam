@@ -1,9 +1,18 @@
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
 import UserContext from "../context/contexts";
-import { useContext } from "react";
 
 export default function Header() {
   const { isAuthenticated } = useContext(UserContext);
+  const [logged, setLogged] = useState(false);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setLogged(true);
+    } else {
+      setLogged(false);
+    }
+  }, [isAuthenticated]);
 
   return (
     <>
@@ -22,7 +31,7 @@ export default function Header() {
                 <Link to="/catalog">Catalog</Link>
               </li>
 
-              {isAuthenticated ? (
+              {logged ? (
                 <>
                   <li>
                     <Link to="/mytrainings">My trainigs</Link>

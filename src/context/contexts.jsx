@@ -31,11 +31,11 @@ export function UserProvider({ children }) {
       },
     });
 
+    const result = await response.json();
     if (!response.ok) {
-      alert(response.statusText);
+      alert(result.message);
       return null;
     }
-    const result = await response.json();
 
     setUser(result);
     localStorage.setItem("_id", result._id);

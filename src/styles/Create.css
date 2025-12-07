@@ -1,0 +1,86 @@
+
+.container-create {
+  background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    width: 400px;
+    text-align: center;
+}
+#form {
+  padding-top: 20px;
+}
+
+
+
+
+
+
+
+
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+/* .centering{
+    display: flex;
+  justify-content: center; 
+  align-items: center;     
+  height: 60vh;      
+  margin: 0;
+  padding-top: 170px;
+} */
+.registerbtn {
+  padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: none;
+    color: rgb(5, 5, 5);
+    cursor: pointer;
+    background-color: #959494;
+    width: 100%;
+    font-size: 16px;
+  transition: all .3s;
+
+}
+.registerbtn:hover {
+    background-color: #c8d20f;
+  color: black;
+  cursor: pointer;
+}
+
+.container-create textarea {
+    width: 92%;
+    max-width: 92%;
+  padding: 15px;
+  /* margin: 22px 0px; */
+  /* display: inline-block; */
+  border: none;
+  border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+  color: black;
+
+}
+.container-create select{
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+/* textarea:focus {
+    background-color: #ddd;
+  outline: none;
+} */
+p.error {
+    text-align: left;
+    border-radius: 0.5em;
+    color: red !important;
+    padding-top: 0;
+    font-weight: bold;
+}
+

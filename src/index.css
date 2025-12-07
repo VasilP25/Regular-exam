@@ -5,6 +5,8 @@
 @import url('./styles/Login.css');
 @import url('./styles/Register.css');
 @import url('./styles/Create.css');
+@import url('./styles/Catalog.css');
+@import url('./styles/singleCard.css');
 
 
 :root {

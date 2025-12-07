@@ -40,8 +40,6 @@ export function TrainingProvider({ children }) {
 
       const result = await response.json();
 
-      console.log(result);
-
       return result;
     } catch (error) {
       alert(error.message);

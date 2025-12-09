@@ -23,53 +23,67 @@ export function UserProvider({ children }) {
   });
 
   const loginHandler = async (data) => {
-    const response = await fetch("http://localhost:3030/users/login", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "content-type": "application/json",
-      },
-    });
+    try {
+      const response = await fetch("http://localhost:3030/users/login", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      const result = await response.json();
+      if (!response.ok) {
+        alert(result.message);
+        return null;
+      }
 
-    const result = await response.json();
-    if (!response.ok) {
-      alert(result.message);
+      setUser(result);
+      localStorage.setItem("_id", result._id);
+      localStorage.setItem("at", result.accessToken);
+      navigate("/");
+      return result;
+    } catch (error) {
+      alert(error.message);
       return null;
     }
-
-    setUser(result);
-    localStorage.setItem("_id", result._id);
-    localStorage.setItem("at", result.accessToken);
-    navigate("/");
-    return result;
   };
 
   const registerHandler = async (data) => {
-    const response = await fetch("http://localhost:3030/users/register", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-    const result = await response.json();
-    if (!response.ok) {
-      alert(result.message);
+    try {
+      const response = await fetch("http://localhost:3030/users/register", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      const result = await response.json();
+      if (!response.ok) {
+        alert(result.message);
+        return null;
+      }
+
+      setUser(result);
+      localStorage.setItem("_id", result._id);
+      localStorage.setItem("at", result.accessToken);
+      navigate("/");
+
+      return result;
+    } catch (error) {
+      alert(error.message);
       return null;
     }
-
-    setUser(result);
-    localStorage.setItem("_id", result._id);
-    localStorage.setItem("at", result.accessToken);
-    navigate("/");
-
-    return result;
   };
 
   const logout = async () => {
-    await fetch("http://localhost:3030/users/logout");
+    try {
+      await fetch("http://localhost:3030/users/logout");
 
-    localStorage.removeItem("_id");
-    localStorage.removeItem("at");
-    setUser(null);
-    navigate("/");
+      localStorage.removeItem("_id");
+      localStorage.removeItem("at");
+      setUser(null);
+      navigate("/");
+    } catch (error) {
+      alert(error.message);
+      return null;
+    }
   };
   const userContextData = {
     user,

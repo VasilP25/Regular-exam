@@ -15,6 +15,9 @@ export default function Details() {
 
   useEffect(() => {
     fetchTraining();
+    if (training._id) {
+      console.log(training);
+    }
   }, []);
 
   return (
@@ -33,9 +36,9 @@ export default function Details() {
             <h3>Време[мин]:</h3>
             <p>{training.timeToComplete}</p>
           </div>
-          <div className="card-body">
+          {/* <div className="card-body">
             <h3>Likes: {training.likes?.length}</h3>
-          </div>
+          </div> */}
           {training._ownerId === user._id ? (
             <>
               <div className="card-footer">
@@ -59,17 +62,23 @@ export default function Details() {
           ) : (
             <></>
           )}
-          {user._id && training._ownerId !== user._id ? (
+          {/* {user._id &&
+          training._ownerId !== user._id &&
+          !training.likes?.includes(user._id) ? (
             <>
-              (
               <div className="card-footer">
-                <Link className="btn edit">Like</Link>
+                <Link
+                  className="btn edit"
+                  to={`/like/${training._id}`}
+                  state={{ id: training._id }}
+                >
+                  Like
+                </Link>
               </div>
-              )
             </>
           ) : (
             <></>
-          )}
+          )} */}
 
           <div className="card-footer">
             {/* <div className="card-body">

@@ -26,13 +26,10 @@ export function TrainingProvider({ children }) {
         body: JSON.stringify(data),
       });
       const result = await response.json();
-      if (!response.ok) {
-        alert(result.message);
-        return null;
-      }
       return result;
     } catch (error) {
       alert(error.message);
+      return null;
     }
   };
   const getAll = async () => {
@@ -44,6 +41,7 @@ export function TrainingProvider({ children }) {
       return result;
     } catch (error) {
       alert(error.message);
+      return null;
     }
   };
   const getOne = async (id) => {
@@ -60,33 +58,48 @@ export function TrainingProvider({ children }) {
     }
   };
   const deleteOne = async (id, accessToken) => {
-    const response = await fetch(`http://localhost:3030/data/trainings/${id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        "X-Authorization": accessToken,
-      },
-    });
-    if (!response.ok) {
-      alert("Something hets wrong!");
+    try {
+      const response = await fetch(
+        `http://localhost:3030/data/trainings/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+            "X-Authorization": accessToken,
+          },
+        }
+      );
+      if (!response.ok) {
+        alert("Something hets wrong!");
+        return null;
+      }
+      const result = response.json();
+      return result;
+    } catch (error) {
+      alert(error.message);
       return null;
     }
-    const result = response.json();
-    return result;
   };
 
   const updateOne = async (id, accessToken, data) => {
-    const response = await fetch(`http://localhost:3030/trainings/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        "X-Authorization": accessToken,
-      },
-      body: JSON.stringify(data),
-    });
-    const result = response.json();
+    try {
+      const response = await fetch(
+        `http://localhost:3030/data/trainings/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+            "X-Authorization": accessToken,
+          },
+          body: JSON.stringify(data),
+        }
+      );
+      const result = response.json();
 
-    return result;
+      return result;
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   const trainingContextData = {

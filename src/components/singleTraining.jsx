@@ -7,7 +7,7 @@ export default function SingleTraining({ training }) {
         <h2>{training.title}</h2>
         <p className="type">{training.type}</p>
         <Link
-          to={`details/${training._id}`}
+          to={`/catalog/details/${training._id}`}
           state={training}
           className="details-link"
         >

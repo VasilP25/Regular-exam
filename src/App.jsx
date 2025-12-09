@@ -12,6 +12,8 @@ import Catalog from "./components/Catalog";
 import Details from "./components/Details";
 import Delete from "./components/Delete";
 import Edit from "./components/Edit";
+import Mytrainings from "./components/Mytrainings";
+import Search from "./components/Search";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="details/:_id/delete" element={<Delete />} />
           <Route path="details/:_id/edit" element={<Edit />} />
         </Route>
+        <Route path="/mytrainings" element={<Mytrainings />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
       <Footer />
     </>

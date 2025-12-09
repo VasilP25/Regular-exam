@@ -8,8 +8,12 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
+  const [emailCheck, setEmailCheck] = useState(false);
+  const reg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const emailChangeHandler = (e) => {
+    console.log("yes");
+
     setEmail(e.target.value);
   };
 
@@ -23,6 +27,16 @@ export default function Register() {
 
   const rePasswordChangeHandler = (e) => {
     setRePassword(e.target.value);
+  };
+
+  const emailChecker = (e) => {
+    console.log(e.target.value);
+
+    if (reg.test(email)) {
+      setEmailCheck(true);
+    } else {
+      setEmailCheck(false);
+    }
   };
 
   const register = () => {
@@ -43,8 +57,6 @@ export default function Register() {
       <div className="centering">
         <form action={register}>
           <div className="containerRegister">
-            {/* <p className="error-message">{error?.message}</p> */}
-
             <h1>Register</h1>
             <p>Please fill in this htmlForm to create an account.</p>
 
@@ -57,14 +69,19 @@ export default function Register() {
               name="email"
               id="email"
               value={email}
-              onChange={emailChangeHandler}
+              onChange={(e) => {
+                emailChangeHandler(e);
+                emailChecker(e);
+              }}
             />
 
             {/* <p className="error">Email is required!</p> */}
 
             {/* <p className="error">Email must be at least 3 characters!</p> */}
 
-            {/* <p className="error">Email must be like: example@example.com</p> */}
+            {emailCheck || (
+              <p className="error">Email must be like: example@example.com</p>
+            )}
 
             <label htmlFor="username">
               <b>Username</b>

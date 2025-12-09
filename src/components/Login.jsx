@@ -7,12 +7,24 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let { loginHandler } = useContext(UserContext);
+  const [emailCheck, setEmailCheck] = useState(false);
+  const reg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const emailChangeHandler = (e) => {
     setEmail(e.target.value);
   };
   const passwordChangeHandler = (e) => {
     setPassword(e.target.value);
+  };
+
+  const emailChecker = (e) => {
+    console.log(e.target.value);
+
+    if (reg.test(email)) {
+      setEmailCheck(true);
+    } else {
+      setEmailCheck(false);
+    }
   };
 
   const submitEvent = async () => {
@@ -41,13 +53,18 @@ export default function Login() {
               name="email"
               placeholder="Enter your Email"
               value={email}
-              onChange={emailChangeHandler}
+              onChange={(e) => {
+                emailChangeHandler(e);
+                emailChecker(e);
+              }}
+              oncha
             />
 
             {/* <p className="error">Email is required!</p> */}
             {/* <p className="error">Email must be at least 3 characters!</p> */}
-
-            {/* <p className="error">Email must be like: example@example.com</p> */}
+            {emailCheck || (
+              <p className="error">Email must be like: example@example.com</p>
+            )}
 
             <label htmlFor="password"> Password: </label>
             <input

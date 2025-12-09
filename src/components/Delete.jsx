@@ -8,7 +8,6 @@ export default function Delete() {
   const { _id } = useParams();
   const { deleteOne } = useContext(TrainingContext);
   const { user } = useContext(UserContext);
-  console.log(_id);
   const deletefetch = async () => {
     await deleteOne(_id, user.accessToken);
 

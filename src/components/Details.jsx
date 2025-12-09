@@ -15,7 +15,6 @@ export default function Details() {
 
   useEffect(() => {
     fetchTraining();
-    console.log(training);
   }, []);
 
   return (

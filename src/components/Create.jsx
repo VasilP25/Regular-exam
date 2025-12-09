@@ -34,7 +34,6 @@ export default function Create() {
       alert("You cannot create training!");
       return null;
     }
-    console.log(user);
 
     try {
       await createTraining(

@@ -6,17 +6,12 @@ import UserContext from "../context/contexts";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let { user, loginHandler } = useContext(UserContext);
+  let { loginHandler } = useContext(UserContext);
 
   const emailChangeHandler = (e) => {
-    console.log(e.target.value);
-    console.log(user);
-
     setEmail(e.target.value);
   };
   const passwordChangeHandler = (e) => {
-    console.log(e.target.value);
-
     setPassword(e.target.value);
   };
 

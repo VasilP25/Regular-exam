@@ -14,13 +14,11 @@ export default function Catalog() {
       setTrainings(result);
     };
     fetchData();
-
-    console.log(trainings);
   }, []);
 
   return (
     <>
-      <div class="container-catalog">
+      <div className="container-catalog">
         {trainings.length > 0 ? (
           trainings.map((training) => (
             <SingleTraining
@@ -29,10 +27,10 @@ export default function Catalog() {
             ></SingleTraining>
           ))
         ) : (
-          <div class="empty-catalog">
+          <div className="empty-catalog">
             <h3>Каталогът е празен</h3>
 
-            <Link to="/create" class="btn">
+            <Link to="/create" className="btn">
               Добави
             </Link>
           </div>

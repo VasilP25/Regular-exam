@@ -17,8 +17,6 @@ export default function LoginFetch(email, password) {
         return response.json();
       })
       .then((result) => {
-        console.log(result);
-
         setData(result);
         // navigate("/");
       });

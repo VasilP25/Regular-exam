@@ -11,12 +11,11 @@ const TrainingContext = createContext({
   getAll() {},
   getOne() {},
   deleteOne() {},
+  updateOne() {},
 });
 
 export function TrainingProvider({ children }) {
   const createTraining = async (data, accessToken) => {
-    console.log(data, accessToken);
-
     try {
       const response = await fetch("http://localhost:3030/data/trainings", {
         method: "POST",
@@ -54,6 +53,7 @@ export function TrainingProvider({ children }) {
       );
 
       const result = await response.json();
+
       return result;
     } catch (error) {
       alert(error.message);
@@ -75,11 +75,26 @@ export function TrainingProvider({ children }) {
     return result;
   };
 
+  const updateOne = async (id, accessToken, data) => {
+    const response = await fetch(`http://localhost:3030/trainings/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        "X-Authorization": accessToken,
+      },
+      body: JSON.stringify(data),
+    });
+    const result = response.json();
+
+    return result;
+  };
+
   const trainingContextData = {
     createTraining,
     getAll,
     getOne,
     deleteOne,
+    updateOne,
   };
 
   return (

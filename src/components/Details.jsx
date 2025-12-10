@@ -6,16 +6,44 @@ import TrainingContext from "../context/trainingContext";
 export default function Details() {
   const { _id } = useParams();
   const { user } = useContext(UserContext);
-  const { getOne } = useContext(TrainingContext);
+  const { getOne, getAllLikes } = useContext(TrainingContext);
   const [training, setTraining] = useState({});
+  const [likes, setLikes] = useState([]);
+  const [isLiked, setIsLiked] = useState([]);
   const fetchTraining = async () => {
     const result = await getOne(_id);
     setTraining(result);
   };
 
+  const fetchLikes = async () => {
+    const result = await getAllLikes();
+
+    const num = result.filter((x) => x.id === training._id);
+
+    setLikes(num);
+
+    const ownLikes = num.filter((x) => {
+      return x.userId === user?._id;
+    });
+
+    setIsLiked(ownLikes);
+  };
+
   useEffect(() => {
     fetchTraining();
   }, []);
+
+  useEffect(() => {
+    fetchLikes();
+
+    if (likes[0]) {
+      setIsLiked(
+        likes.filter((x) => {
+          return x.userId === user?._id;
+        })
+      );
+    }
+  }, [training]);
 
   return (
     <>
@@ -33,10 +61,10 @@ export default function Details() {
             <h3>Време[мин]:</h3>
             <p>{training.timeToComplete}</p>
           </div>
-          {/* <div className="card-body">
-            <h3>Likes: {training.likes?.length}</h3>
-          </div> */}
-          {training._ownerId === user._id ? (
+          <div className="card-body">
+            <h3>Likes: {likes.length}</h3>
+          </div>
+          {training._ownerId === user?._id ? (
             <>
               <div className="card-footer">
                 <Link
@@ -59,9 +87,7 @@ export default function Details() {
           ) : (
             <></>
           )}
-          {/* {user._id &&
-          training._ownerId !== user._id &&
-          !training.likes?.includes(user._id) ? (
+          {user._id && training._ownerId !== user._id && isLiked.length < 1 ? (
             <>
               <div className="card-footer">
                 <Link
@@ -75,12 +101,20 @@ export default function Details() {
             </>
           ) : (
             <></>
-          )} */}
+          )}
 
           <div className="card-footer">
-            {/* <div className="card-body">
-            <h3>Thank you for your Like!</h3>
-          </div> */}
+            {user._id &&
+            training._ownerId !== user._id &&
+            isLiked.length > 0 ? (
+              <>
+                <div className="card-body">
+                  <h3>Thank you for your Like!</h3>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

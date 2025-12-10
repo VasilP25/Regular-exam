@@ -16,6 +16,7 @@ import Mytrainings from "./components/Mytrainings";
 import Search from "./components/Search";
 import NotLoggedGuard from "./components/notLoggedGuard";
 import LoggedGuard from "./components/LoggedGuard";
+import Like from "./components/Like";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route element={<LoggedGuard />}>
           <Route path="create" element={<Create />} />
           <Route path="mytrainings" element={<Mytrainings />} />
+          <Route path="/like/:id" element={<Like />} />
         </Route>
         <Route path="/search" element={<Search />} />
       </Routes>

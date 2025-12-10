@@ -1,16 +1,97 @@
-# React + Vite
+# Training center – React web application for workouts
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Training center is a web application developed with **React** that allows users to create, view and share workouts.
 
-Currently, two official plugins are available:
+## Основни функции
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Register and login** – every user have own account
+- **Create workout** – adding custom workouts
+- **Catalog** – list of all uploaded workouts
+- **My workouts** – personal page with your workouts
+- **Workout details** – detailed description of selected workout
+- **Edit** - if you are the creator of the workout, you can edit it
+- **Delete** - if you are the creator of the workout, you can delete it
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Технологии
 
-## Expanding the ESLint configuration
+- **Frontend:** React 19.2.0
+- **API:** SoftUni REST API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Започване
+
+### Предпоставки
+
+- Node.js >= 20
+- React:
+  ```bash
+  npm create vite
+  ```
+
+Инсталирай зависимости:
+
+```bash
+  npm install
+```
+
+Стартиране (Dev)
+
+```bash
+npm run dev
+```
+
+---
+
+### Structure
+
+```text
+src/
+├─ assets/      # Header and footer components
+├─ components/  # All components used in the application
+├─ context/     # User and Training context files
+├─ styles/      # CSS files for every component
+└─ utils/       # Utils used in application
+```
+
+---
+
+### Navigation and routes
+
+```text
+<Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route element={<NotLoggedGuard />}>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Route>
+        <Route path="/catalog">
+          <Route index element={<Catalog />} />
+          <Route path="details/:_id" element={<Details />} />
+          <Route element={<LoggedGuard />}>
+            <Route path="details/:_id/delete" element={<Delete />} />
+            <Route path="details/:_id/edit" element={<Edit />} />
+          </Route>
+        </Route>
+        <Route path="/logout" element={<Logout />} />
+        <Route element={<LoggedGuard />}>
+          <Route path="create" element={<Create />} />
+          <Route path="mytrainings" element={<Mytrainings />} />
+        </Route>
+        <Route path="/search" element={<Search />} />
+      </Routes>
+```
+
+**NotLoggedGuard** - you can if you are **NOT** logged  
+**LoggedGuard** -you can if you are logged
+
+---
+
+### Access and roles
+
+- **Guest:** sees the catalog and details without creating. -
+- **User:** can create, like, see "My Workouts".
+- **Workout Creator:** you can edit and delete your own workouts.

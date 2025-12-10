@@ -12,6 +12,8 @@ const TrainingContext = createContext({
   getOne() {},
   deleteOne() {},
   updateOne() {},
+  createLike() {},
+  getAllLikes() {},
 });
 
 export function TrainingProvider({ children }) {
@@ -101,6 +103,39 @@ export function TrainingProvider({ children }) {
       alert(error.message);
     }
   };
+  const createLike = async (data, accessToken) => {
+    try {
+      const response = await fetch(
+        "http://localhost:3030/data/likesTrainings",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            "X-Authorization": accessToken,
+          },
+          body: JSON.stringify(data),
+        }
+      );
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      alert(error.message);
+      return null;
+    }
+  };
+
+  const getAllLikes = async () => {
+    try {
+      const response = await fetch("http://localhost:3030/data/likesTrainings");
+
+      const result = await response.json();
+
+      return result;
+    } catch (error) {
+      alert(error.message);
+      return null;
+    }
+  };
 
   const trainingContextData = {
     createTraining,
@@ -108,6 +143,8 @@ export function TrainingProvider({ children }) {
     getOne,
     deleteOne,
     updateOne,
+    createLike,
+    getAllLikes,
   };
 
   return (

@@ -30,7 +30,7 @@ export default function Create() {
   };
 
   const createHandler = async () => {
-    if (!localStorage.getItem("_id")) {
+    if (!user._id) {
       alert("You cannot create training!");
       return null;
     }

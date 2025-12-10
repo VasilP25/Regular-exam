@@ -1,18 +1,18 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import UserContext from "../context/contexts";
 import { Outlet, useNavigate } from "react-router";
 
 export default function NotLoggedGuard() {
   const navigate = useNavigate();
-  const userId = localStorage.getItem("_id");
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (userId) {
+    if (user._id) {
       navigate("/");
     }
   }, []);
 
-  if (!userId) {
+  if (!user._id) {
     return <Outlet />;
   }
   return null;

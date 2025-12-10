@@ -35,7 +35,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-p {
+.content p {
   font-size: 1.2rem;
   margin-bottom: 0px;
   line-height: 1.6;

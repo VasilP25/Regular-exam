@@ -17,9 +17,7 @@ export default function Login() {
     setPassword(e.target.value);
   };
 
-  const emailChecker = (e) => {
-    console.log(e.target.value);
-
+  const emailChecker = () => {
     if (reg.test(email)) {
       setEmailCheck(true);
     } else {
@@ -57,7 +55,6 @@ export default function Login() {
                 emailChangeHandler(e);
                 emailChecker(e);
               }}
-              oncha
             />
 
             {/* <p className="error">Email is required!</p> */}

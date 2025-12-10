@@ -12,8 +12,6 @@ export default function Register() {
   const reg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const emailChangeHandler = (e) => {
-    console.log("yes");
-
     setEmail(e.target.value);
   };
 
@@ -29,9 +27,7 @@ export default function Register() {
     setRePassword(e.target.value);
   };
 
-  const emailChecker = (e) => {
-    console.log(e.target.value);
-
+  const emailChecker = () => {
     if (reg.test(email)) {
       setEmailCheck(true);
     } else {

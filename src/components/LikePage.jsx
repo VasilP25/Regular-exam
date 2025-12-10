@@ -17,8 +17,6 @@ export default function Like() {
     }));
   };
   const update = async () => {
-    console.log(state.state.id, user.accessToken, training);
-
     try {
       await updateOne(state.state.id, user.accessToken, training);
       navigate("/catalog");
@@ -34,8 +32,6 @@ export default function Like() {
 
   useEffect(() => {
     if (training.likes) {
-      console.log(training);
-
       update();
     }
   });

@@ -14,8 +14,6 @@ export default function Mytrainings() {
       const result = await getAll();
 
       if (result) {
-        console.log(result);
-
         setTrainings(
           result.filter((training) => training._ownerId === user._id)
         );

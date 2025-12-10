@@ -14,6 +14,8 @@ import Delete from "./components/Delete";
 import Edit from "./components/Edit";
 import Mytrainings from "./components/Mytrainings";
 import Search from "./components/Search";
+import NotLoggedGuard from "./components/notLoggedGuard";
+import LoggedGuard from "./components/LoggedGuard";
 
 function App() {
   return (
@@ -22,17 +24,23 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/create" element={<Create />} />
+        <Route element={<NotLoggedGuard />}>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Route>
         <Route path="/catalog">
           <Route index element={<Catalog />} />
           <Route path="details/:_id" element={<Details />} />
-          <Route path="details/:_id/delete" element={<Delete />} />
-          <Route path="details/:_id/edit" element={<Edit />} />
+          <Route element={<LoggedGuard />}>
+            <Route path="details/:_id/delete" element={<Delete />} />
+            <Route path="details/:_id/edit" element={<Edit />} />
+          </Route>
         </Route>
-        <Route path="/mytrainings" element={<Mytrainings />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route element={<LoggedGuard />}>
+          <Route path="create" element={<Create />} />
+          <Route path="mytrainings" element={<Mytrainings />} />
+        </Route>
         <Route path="/search" element={<Search />} />
       </Routes>
       <Footer />

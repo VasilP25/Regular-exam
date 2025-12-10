@@ -39,7 +39,6 @@ export function UserProvider({ children }) {
 
       setUser(result);
       localStorage.setItem("_id", result._id);
-      localStorage.setItem("at", result.accessToken);
       navigate("/");
       return result;
     } catch (error) {
@@ -62,7 +61,6 @@ export function UserProvider({ children }) {
 
       setUser(result);
       localStorage.setItem("_id", result._id);
-      localStorage.setItem("at", result.accessToken);
       navigate("/");
 
       return result;

@@ -15,9 +15,6 @@ export default function Details() {
 
   useEffect(() => {
     fetchTraining();
-    if (training._id) {
-      console.log(training);
-    }
   }, []);
 
   return (
